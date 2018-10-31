@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Provider, connect } from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
+import { watchFetchWeather } from './actions/weatherAction';
+import reducer from './reducers/index';
+import App from './App';
+import './styles/index.css';
+import './styles/card.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const sagaMiddleware = createSagaMiddleware();
+export const store = createStore(
+    reducer,
+    applyMiddleware(sagaMiddleware)
+  );
+  sagaMiddleware.run(watchFetchWeather);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+  const ConnectedApp = connect((state) => {
+    return state;
+  })(App);
+
+ReactDOM.render(<Provider store={store}><ConnectedApp /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();
