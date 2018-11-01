@@ -13,26 +13,26 @@ class WeatherDisplay extends Component {
 
     render() {
         const formatter = new Intl.DateTimeFormat("ru", { month: "long", day: "numeric" });
-        const {weather, description} = this.props;
+        const {weather: {list, cod}, description} = this.props;
         const { id } = this.state;
         let date = null;
         
-        if(weather.cod === "200")
-        date = formatter.format(new Date(weather.list[id].dt_txt.split(" ")[0]));
+        if(cod === "200")
+        date = formatter.format(new Date(list[id].dt_txt.split(" ")[0]));
 
-        return weather.cod === "200" ?
+        return cod === "200" ?
             (<div className="weather-card">
                 <div className="weather-card__content">
                     <div className="weather-card__header">
                         <WeatherIcon 
                         name="owm" 
-                        iconId={`${weather.list[id].weather[0].id}`} 
+                        iconId={`${list[id].weather[0].id}`} 
                         flip="horizontal" 
                         rotate="90" 
                         style={{ fontSize: '70px', color: "black" }} 
                         />
                         <div>
-                            <span className="weather-card__temperature">{weather.list[id].main.temp.toFixed()}&deg;C</span>
+                            <span className="weather-card__temperature">{list[id].main.temp.toFixed()}&deg;C</span>
                             <span className="weather-card__description">{date}
                             </span>
                             <span className="weather-card__location">{description}</span>
@@ -50,16 +50,16 @@ class WeatherDisplay extends Component {
                     <tbody>
                         <tr>
                             <td>Макс. температура</td>
-                            <td>{weather.list[id].main.temp_max.toFixed()}&deg;C</td>
+                            <td>{list[id].main.temp_max.toFixed()}&deg;C</td>
                         </tr>
 
                         <tr>
                             <td>Мин. температура</td>
-                            <td>{weather.list[id].main.temp_min.toFixed()}&deg;C</td>
+                            <td>{list[id].main.temp_min.toFixed()}&deg;C</td>
                         </tr>
                         <tr>
                             <td>Скорость ветра</td>
-                            <td>{weather.list[id].wind.speed} км/ч</td>
+                            <td>{list[id].wind.speed} км/ч</td>
                         </tr>
                         </tbody>
                     </table>

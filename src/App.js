@@ -23,7 +23,9 @@ class App extends Component {
         latitude: 37.7577,
         longitude: -122.4376,
         zoom: 8
-      }
+      },
+      latCity: null,
+      longCity: null
     };
   }
 
@@ -72,11 +74,12 @@ class App extends Component {
   }
 
   resize = () => {
+    const {width, height} = this.props;
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth,
-        height: this.props.height || window.innerHeight
+        width: width || window.innerWidth,
+        height: height || window.innerHeight
       }
     });
   };
@@ -91,18 +94,18 @@ class App extends Component {
 
   onSuggestSelect = (suggest) => {
     if (suggest) {
-      const { description, location } = suggest;
+      const { description, location: {lat, lng} } = suggest;
 
       this.getWeather(description);
       this.setState({
           viewport: {
             ...this.state.viewport,
             zoom: 12,
-            latitude: location.lat,
-            longitude: location.lng,
+            latitude: lat,
+            longitude: lng,
           },
-          latCity: location.lat,
-          longCity: location.lng
+          latCity: lat,
+          longCity: lng
       });
     }
   }
