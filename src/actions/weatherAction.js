@@ -28,7 +28,7 @@ export function* fetchWeatherAsync() {
     const {description} = yield store.getState();
     yield put(requestWeather());
     const data = yield call(() => {
-      return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${description}&APPID=${WEATHER_KEY}&units=metric`)
+      return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${description}&APPID=${WEATHER_KEY}&units=metric`)
         .then(res => res.json())
     }
     );
