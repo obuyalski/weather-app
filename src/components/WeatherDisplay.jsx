@@ -40,9 +40,9 @@ class WeatherDisplay extends Component {
                     </div>
                     <nav className="weather-card__navigation" role='navigation'>
                         <ul className="weather-card__button" onClick={(e) => this.showWeather(e)}>
-                            <li><button className="btn" id={0}>Сегодня</button></li>
-                            <li><button className="btn" id={9}>Завтра</button></li>
-                            <li><button className="btn" id={17}>Послезавтра</button></li>
+                            <li><button className="button button-default-flat link" id={0}>Сегодня</button></li>
+                            <li><button className="button button-default-flat link" id={9}>Завтра</button></li>
+                            <li><button className="button button-default-flat link" id={17}>Послезавтра</button></li>
                         </ul>
                     </nav>
 

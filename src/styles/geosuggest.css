@@ -24,7 +24,7 @@
     outline: none;
   }
   .geosuggest__input:focus {
-     border-color: #267dc0;
+    border-color: #267dc0;
     border: 1px solid #008abf;
     transition: 0.35s ease;
     color: black;
@@ -85,13 +85,11 @@
   @media only screen and (max-width: 768px) {
     .geosuggest {
         width: 70%;
-      }
-      
+      } 
 }
 
 @media only screen and (max-width: 426px) {
   .geosuggest {
       width: 85%;
     }
-    
 }
