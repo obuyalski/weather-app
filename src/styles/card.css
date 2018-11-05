@@ -3,17 +3,20 @@
   }
   .weather-card {
     margin-top: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: left;
+    left: 50%;
+    position: absolute;
+    z-index: 1;
+    width: 380px;
+    margin-top: 7%;
+    transform: translate(-50%);
   }
   .weather-card__content {
     padding: 2%;
     margin: 2%;
     background-color:rgba(255, 255, 255, 0.9);
-    width: 30%;
     border-radius: 10px;
-    height: 350px;
+    height: 300px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -26,6 +29,8 @@
   }
   .weather-card__header {
     display: flex;
+    align-items: center;
+    justify-content: space-around;
     line-height: 1;
      transform: rotate(0deg) scale(0.3,0.3) ; opacity: 0; 
        transform: rotate(0deg) scale(1.05,1.05) ; opacity: 1;  
@@ -94,9 +99,15 @@
 
 
 @media only screen and (max-width: 768px) {
+  .weather-card {
+    width: 65%;
+    margin-top: 10%;
+  }
+
     .weather-card__content {
         padding: 3%;
-        width: 50%;
+        /* width: 100%; */
+        height: 300px;
       }     
     .weather-card__navigation ul > li > button {
         font-size: 1.2em;
@@ -104,10 +115,15 @@
 }
 
 @media only screen and (max-width: 426px) {
+    .weather-card {
+      width: 95%;
+      margin-top: 25%
+    }
+
     .weather-card__content {
         padding: 8%;
         width: 95%;
-        height: 230px;
+        height: 200px;
     }
         
     .weather-card__navigation ul > li > button {

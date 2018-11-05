@@ -34,7 +34,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="fixed-search">
           <Geosuggest
             placeholder="Поиск на карте"
             onViewportChange={this.updateViewport}
@@ -42,7 +41,6 @@ class App extends Component {
             location={new window.google.maps.LatLng(53.558572, 9.9278215)}
             radius={20} />
           <WeatherDisplay />
-        </div>
         <MapGL
           {...viewport}
           mapStyle={mapStyle}
