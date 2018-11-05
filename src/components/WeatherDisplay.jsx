@@ -14,6 +14,7 @@ class WeatherDisplay extends Component {
     render() {
         const formatter = new Intl.DateTimeFormat("ru", { month: "long", day: "numeric" });
         const {weather: {list, cod}, description} = this.props;
+        console.log(list);
         const { id } = this.state;
         let date = null;
         
@@ -41,8 +42,8 @@ class WeatherDisplay extends Component {
                     <nav className="weather-card__navigation" role='navigation'>
                         <ul className="weather-card__button" onClick={(e) => this.showWeather(e)}>
                             <li><button className="button button-default-flat link" id={0}>Сегодня</button></li>
-                            <li><button className="button button-default-flat link" id={9}>Завтра</button></li>
-                            <li><button className="button button-default-flat link" id={17}>Послезавтра</button></li>
+                            <li><button className="button button-default-flat link" id={8}>Завтра</button></li>
+                            <li><button className="button button-default-flat link" id={16}>Послезавтра</button></li>
                         </ul>
                     </nav>
 
